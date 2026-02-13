@@ -298,7 +298,18 @@ export default function NarrativesPage() {
               <h3 className="font-semibold text-gray-800">Narrative-Based Token Candidates</h3>
               <p className="text-sm text-gray-500">Ranked by social signals + narrative alignment</p>
             </div>
-            <table className="min-w-full divide-y divide-gray-100">
+            {candidates.length === 0 ? (
+              <div className="p-12 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                  <IconTarget size={32} className="text-blue-300" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-700 mb-2">No Token Candidates</h3>
+                <p className="text-gray-500 text-sm max-w-md mx-auto">
+                  No tokens currently match active narrative criteria. Candidates will appear as tokens show alignment with emerging narratives.
+                </p>
+              </div>
+            ) : (
+              <table className="min-w-full divide-y divide-gray-100">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rank</th>
