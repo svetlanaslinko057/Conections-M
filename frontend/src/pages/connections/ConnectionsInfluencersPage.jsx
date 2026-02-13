@@ -373,12 +373,12 @@ export default function ConnectionsInfluencersPage() {
                 value={sortFromUrl} 
                 onValueChange={(val) => updateParams('sort', val)}
               >
-                <SelectTrigger className="w-36 md:w-48 h-10 md:h-9 bg-white text-xs md:text-sm" data-testid="influencer-sort">
-                  <span className="flex items-center gap-2">
-                    <ArrowUpDown className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                <SelectTrigger className="w-36 md:w-48 h-10 md:h-9 bg-white text-xs md:text-sm [&>span]:!flex [&>span]:!flex-row [&>span]:!items-center [&>span]:!whitespace-nowrap" data-testid="influencer-sort">
+                  <div className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                    <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
                     <span className="text-gray-500">Sort:</span>
                     <SelectValue placeholder="Influence" />
-                  </span>
+                  </div>
                 </SelectTrigger>
                 <SelectContent>
                   {SORT_OPTIONS.map(opt => (
