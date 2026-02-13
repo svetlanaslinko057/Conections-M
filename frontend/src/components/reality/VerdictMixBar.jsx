@@ -59,11 +59,11 @@ export function VerdictMixBar({ confirms, contradicts, nodata, height = 8, light
 export function VerdictMixText({ confirms, contradicts, nodata }) {
   return (
     <span style={{ fontSize: '12px', color: '#6b7280' }}>
-      <span style={{ color: '#10b981', fontWeight: 600 }}>{confirms}C</span>
+      <span style={{ color: '#10b981', fontWeight: 600 }}>{confirms}</span>
+      <span style={{ color: '#9ca3af' }}> true</span>
       {' · '}
-      <span style={{ color: '#ef4444', fontWeight: 600 }}>{contradicts}X</span>
-      {' · '}
-      <span style={{ color: '#9ca3af', fontWeight: 600 }}>{nodata}N</span>
+      <span style={{ color: '#ef4444', fontWeight: 600 }}>{contradicts}</span>
+      <span style={{ color: '#9ca3af' }}> fake</span>
     </span>
   );
 }
