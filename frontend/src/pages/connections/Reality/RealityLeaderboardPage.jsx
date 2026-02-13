@@ -345,8 +345,8 @@ export default function RealityLeaderboardPage() {
           {/* Header */}
           <div style={{ padding: '16px 20px', borderBottom: '1px solid #e5e7eb', background: '#f9fafb' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div>
-                <h3 style={{ margin: 0, fontSize: '14px', fontWeight: 600, color: '#111827' }}>Reality Score — Credibility Tiers</h3>
+              <div style={{ position: 'relative' }}>
+                <ScoreTitleWithTooltip />
                 <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#6b7280' }}>Based on ratio of confirmed vs contradicted statements</p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '12px' }}>
