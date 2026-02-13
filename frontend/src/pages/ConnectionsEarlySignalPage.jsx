@@ -370,21 +370,21 @@ const TableView = ({ accounts, selectedId, onSelect, onViewProfile }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+        <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
           <tr>
             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Account</th>
             <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Profile</th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700"
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700 transition-colors"
                 onClick={() => handleSort('influence')}>
               Influence {sortBy === 'influence' && (sortDir === 'desc' ? '↓' : '↑')}
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700"
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700 transition-colors"
                 onClick={() => handleSort('early_signal')}>
               Signal {sortBy === 'early_signal' && (sortDir === 'desc' ? '↓' : '↑')}
             </th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700"
+            <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:text-gray-700 transition-colors"
                 onClick={() => handleSort('acceleration')}>
               Accel {sortBy === 'acceleration' && (sortDir === 'desc' ? '↓' : '↑')}
             </th>
@@ -393,10 +393,16 @@ const TableView = ({ accounts, selectedId, onSelect, onViewProfile }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-100">
-          {sortedData.map(account => (
+          {sortedData.length === 0 ? (
+            <tr>
+              <td colSpan={7} className="px-4 py-12 text-center text-gray-400">
+                No accounts match current filters
+              </td>
+            </tr>
+          ) : sortedData.map(account => (
             <tr key={account.author_id} 
                 onClick={() => onSelect(account.author_id)}
-                className={`cursor-pointer ${selectedId === account.author_id ? 'bg-blue-50' : 'hover:bg-gray-50'}`}>
+                className={`cursor-pointer transition-colors ${selectedId === account.author_id ? 'bg-blue-50' : 'hover:bg-gray-50'}`}>
               <td className="px-4 py-3 whitespace-nowrap">
                 <div className="flex items-center gap-2">
                   {account.avatar ? (
@@ -437,8 +443,8 @@ const TableView = ({ accounts, selectedId, onSelect, onViewProfile }) => {
               <td className="px-4 py-3"><RiskBadge level={account.risk_level} /></td>
               <td className="px-4 py-3">
                 <button onClick={(e) => { e.stopPropagation(); onViewProfile(account.username); }}
-                        className="text-gray-400 hover:text-blue-500">
-                  <Eye className="w-4 h-4" />
+                        className="text-gray-400 hover:text-blue-500 transition-colors">
+                  <ExternalLink className="w-4 h-4" />
                 </button>
               </td>
             </tr>
