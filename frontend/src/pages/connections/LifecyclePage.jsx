@@ -229,16 +229,6 @@ const InfoCard = ({ phase, count, total, expanded, onToggle }) => {
             </ul>
           </div>
           
-          {/* Formula */}
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-3">
-            <h4 className="font-semibold text-gray-800 dark:text-white mb-1 flex items-center gap-2">
-              <IconSpikePump size={16} /> Calculation Formula
-            </h4>
-            <code className="text-xs text-gray-600 dark:text-gray-400 font-mono break-all">
-              {config.formula}
-            </code>
-          </div>
-          
           {/* Trading hint */}
           <div className={`rounded-lg p-3 ${config.bg}`}>
             <p className={`text-sm font-medium ${config.text}`}>{config.tradingHint}</p>
