@@ -352,11 +352,11 @@ export default function RealityLeaderboardPage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '12px' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>
-                  <span style={{ color: '#6b7280' }}>CONFIRMS = Совпало с on-chain</span>
+                  <span style={{ color: '#6b7280' }}>CONFIRMS = Matches on-chain</span>
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }}></span>
-                  <span style={{ color: '#6b7280' }}>CONTRADICTS = Противоречит on-chain</span>
+                  <span style={{ color: '#6b7280' }}>CONTRADICTS = Contradicts on-chain</span>
                 </span>
               </div>
             </div>
