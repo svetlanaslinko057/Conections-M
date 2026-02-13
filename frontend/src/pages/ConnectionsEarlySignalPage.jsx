@@ -613,7 +613,7 @@ const ConnectionsEarlySignalPage = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 p-4 bg-white rounded-2xl border border-gray-200 overflow-x-auto shadow-sm animate-fade-in-up stagger-1">
+      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 p-4 bg-white rounded-2xl border border-gray-200 shadow-sm animate-fade-in-up stagger-1">
         <Tooltip content="Filter by account type: Retail (regular users), Influencer (high reach), Whale (major players)" position="bottom">
           <span className="text-xs font-medium text-gray-500 uppercase cursor-help flex-shrink-0">
             Profile:
