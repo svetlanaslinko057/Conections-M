@@ -275,31 +275,33 @@ const FocusChart = ({ account }) => {
 
 const AccountList = ({ accounts, selectedId, onSelect, onViewProfile }) => {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-      <div className="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 border-b border-gray-200">
         <h3 className="font-semibold text-gray-900">Accounts ({accounts.length})</h3>
-        <Tooltip content="Select an account to view its position on the radar chart. Click the eye icon to view full profile.">
-          <IconAttention size={16} className="text-gray-400 hover:text-gray-600" />
-        </Tooltip>
       </div>
       <div className="max-h-[500px] overflow-y-auto divide-y divide-gray-100">
-        {accounts.map(account => {
+        {accounts.length === 0 ? (
+          <div className="p-8 text-center text-gray-400">
+            <IconTarget size={32} className="mx-auto mb-2 opacity-50" />
+            <p>No accounts match filters</p>
+          </div>
+        ) : accounts.map(account => {
           const isSelected = selectedId === account.author_id;
           
           return (
             <div
               key={account.author_id}
               onClick={() => onSelect(account.author_id)}
-              className={`px-4 py-3 cursor-pointer transition-colors flex items-center gap-3 ${
-                isSelected ? 'bg-blue-50 border-l-4 border-blue-500' : 'hover:bg-gray-50'
+              className={`px-4 py-3 cursor-pointer transition-all duration-200 flex items-center gap-3 ${
+                isSelected ? 'bg-blue-50 border-l-4 border-blue-500' : 'hover:bg-gray-50 border-l-4 border-transparent'
               }`}
             >
               {/* Avatar */}
               {account.avatar ? (
-                <img src={account.avatar} alt="" className="w-10 h-10 rounded-full object-cover"
+                <img src={account.avatar} alt="" className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
                      onError={(e) => { e.target.style.display = 'none'; }} />
               ) : (
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold shadow-sm">
                   {account.username?.charAt(0)?.toUpperCase()}
                 </div>
               )}
@@ -325,13 +327,13 @@ const AccountList = ({ accounts, selectedId, onSelect, onViewProfile }) => {
                 </div>
               </div>
               
-              {/* View button */}
+              {/* View Profile button */}
               <button
                 onClick={(e) => { e.stopPropagation(); onViewProfile(account.username); }}
-                className="p-2 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg"
+                className="p-2 text-gray-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
                 title="View Profile"
               >
-                <IconAttention size={16} />
+                <ExternalLink size={16} />
               </button>
             </div>
           );
