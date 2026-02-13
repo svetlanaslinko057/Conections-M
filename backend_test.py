@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 
 class ConnectionsAPITester:
-    def __init__(self, base_url="https://parser-core.preview.emergentagent.com"):
+    def __init__(self, base_url="https://narratives-hub-2.preview.emergentagent.com"):
         self.base_url = base_url
         self.session = requests.Session()
         self.tests_run = 0

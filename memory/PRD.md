@@ -99,6 +99,6 @@ COOKIE_ENC_KEY=<generated>
 
 ### Frontend (.env)
 ```
-REACT_APP_BACKEND_URL=https://<domain>.preview.emergentagent.com
+REACT_APP_BACKEND_URL=https://narratives-hub-2.preview.emergentagent.com
 WDS_SOCKET_PORT=443
 ```

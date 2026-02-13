@@ -1,0 +1,169 @@
+<analysis>**original_problem_statement:**
+The user wants to set up the logic for a Connections Module and a Twitter-parsing module from a given GitHub repository. The initial focus is on getting the connections module operational so that further development can build upon it.
+
+The user provided a set of instructions for deployment:
+1.  Clone the repository: 
+2.  Set up backend  file with specified variables.
+3.  Install backend (Yarn) and frontend (Yarn) dependencies, and Python dependencies for a parser.
+4.  Create specific collections and documents in MongoDB for  and .
+5.  Update  and .
+6.  Restart services using supervisor.
+7.  Zip a browser extension located in .
+
+Later, the user clarified to focus only on the **Connections Module** and ignore the bot and parser logic for now.
+
+Subsequent requests were UI/UX improvements:
+*   **Reality Leaderboard**: Hide a complex formula and show it in a tooltip. Replace Russian text with English.
+*   **Bug Fix**: Fix a crash on the Reality Leaderboard page caused by recent changes.
+*   **UI Alignment**: Fix alignment of the Sort icon and text. Add an icon to the Influence Network page header.
+*   **Empty State**: Add no data messages on the Narratives page when lists are empty.
+*   **Lifecycle Analytics**: A major refactor request to:
+    *   Simplify/remove complex formulas.
+    *   Remove all eye icons from tooltips and trigger tooltips on hover only.
+    *   Make the Phase Detection Logic section more compact.
+    *   Ensure all stat cards have a fixed, identical width.
+    *   Fix the z-index of tooltips to ensure they appear above all other elements.
+*   **Card Animation**: Unify the hover animation for all cards across the application, using the style from the Cluster Attention page as the reference. Remove the jumping number animation on the Lifecycle page.
+
+**User's preferred language**: Russian (русский)
+
+**what currently exists?**
+The application is a full-stack project with a React/TypeScript frontend and a Node.js/TypeScript (Fastify) backend. A Python FastAPI proxy has been set up to forward requests from the platform's default port (8001) to the Node.js backend (8003). The initial Connections Module is up and running. Several UI fixes and enhancements have been implemented across various pages as requested by the user.
+
+**Last working item**:
+- Last item agent was working: The user requested to unify the hover animations on all cards across the application to match the style of the Cluster Attention page (a slight lift and shadow effect). The agent was tasked with removing the jumping number animation from the cards on the  page as the first step.
+- Status: IN PROGRESS
+- Agent Testing Done: N
+- Which testing method agent to use? screenshot tool
+- User Testing Done: N
+
+**All Pending/In progress Issue list**:
+- Issue 1: Card hover animations are inconsistent across different pages. (P0)
+
+**Issues Detail:**
+- Issue 1:
+    - **Description**: The user wants all cards to have a consistent hover animation, using the Cluster Attention page's effect (gentle lift and shadow) as the standard. The Lifecycle page has a jumping number effect that needs to be removed, and the Reality Leaderboard page has no hover effect at all.
+    - **Attempted fixes**: The agent identified the  file to start removing the unwanted animation but has not yet implemented the fix or propagated the new standard animation.
+    - **Next debug checklist**:
+        1.  Modify  to remove the jumping number animation from the stats cards.
+        2.  Identify the CSS/styling for the card hover effect on the  page.
+        3.  Apply this standardized hover effect to cards on , , and any other pages with card-like elements to ensure consistency.
+    - **Why fix this issue and what will be achieved with the fix?**: To create a polished and consistent user experience across the entire application, as requested by the user.
+    - **Status**: IN PROGRESS
+    - **Is recurring issue?**: N
+    - **Should Test frontend/backend/both after fix?**: frontend
+
+**In progress Task List**:
+- Task 1: Unify card hover animations.
+    - **Where to resume**: The agent was inspecting . The next step is to modify this file to remove the existing animation and then apply the standard animation from Cluster Attention page.
+    - **What will be achieved with this?**: A consistent and professional look and feel for all interactive cards in the application.
+    - **Status**: IN PROGRESS
+    - **Should Test frontend/backend/both after fix?**: frontend
+    - **Blocked on something**: No.
+
+**Upcoming and Future Tasks**
+- **Future Tasks**:
+    - Set up the Twitter-parsing module. The user explicitly deferred this task, saying, The bot and parser logic are not needed right now. (P2)
+
+**Completed work in this session**
+- **Project Setup**: Cloned the repository, configured environment variables, installed dependencies, and set up a Python proxy to correctly run the Node.js backend.
+- **Backend Conflict Resolution**: Disabled a duplicate Twitter module in  to resolve a route conflict and allow the server to start.
+- **UI - Reality Leaderboard**:
+    - Replaced Russian text with English (CONFIRMS, CONTRADICTS).
+    - Removed a complex formula from the main view and placed it inside a tooltip.
+    - Fixed a runtime error caused by a component being rendered before its definition.
+- **UI - Sort Component**:
+    - Fixed the alignment of the sort icon and text, making them appear in a single horizontal line in .
+- **UI - Influence Network**:
+    - Added an icon to the page header in .
+- **UI - Narratives Page**:
+    - Added empty state messages that display when there is no data in the Narratives and Token Candidates tabs in .
+- **UI - Lifecycle/Alt Season Page**:
+    - Removed complex calculation formulas from info cards.
+    - Removed all eye icons, making tooltips appear on hover only.
+    - Made statistics cards a uniform, fixed width.
+    - Re-styled the Phase Detection Guide to be more compact.
+    - Fixed the tooltip  to ensure they render on top of other elements.
+
+**Earlier issues found/mentioned but not fixed**
+None. The agent has addressed all issues raised by the user so far, with the last one being currently in progress.
+
+**Known issue recurrence from previous fork**
+None. This is the first session on this project.
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+-   **Frontend**: React, TypeScript, Tailwind CSS
+-   **Backend**: Node.js, TypeScript, Fastify
+-   **Proxy**: Python, FastAPI (used as a bridge for the platform)
+-   **Database**: MongoDB
+-   **Process Management**: Supervisor
+
+**key DB schema**
+-   : 
+-   : 
+
+**changes in tech stack**
+- A **Python FastAPI proxy** () was introduced to act as a bridge. The platform expects a Python backend on port 8001, but the project's core backend is a Node.js service. The proxy forwards all  requests from port 8001 to the Node.js service on port 8003.
+
+**All files of reference**
+-    (Created): The Python proxy server.
+-    (Created): A shell script to compile and run the Node.js backend.
+-    (Created): Supervisor configuration for the Node.js service.
+-    (Updated): Commented out a conflicting Twitter module.
+-    (Updated): For UI changes, translations, and bug fixes.
+-    (Updated): To add a header icon.
+-    (Updated): To fix the sort component alignment.
+-    (Updated): To add empty state messages.
+-    (Updated): For a major UI refactor (removing formulas, eye icons, fixing widths and z-index).
+
+**Areas that need refactoring**:
+- None identified, but the hover animation unification task is a form of code consolidation.
+
+**key api endpoints**
+-  (Python proxy health check)
+-  (Node.js backend health check, accessed via proxy)
+-  (Connections module endpoints, accessed via proxy)
+
+**Critical Info for New Agent**
+- The backend setup is non-standard for this platform. A Python FastAPI proxy runs on  () and forwards all API requests to the main Node.js backend, which runs on . This was done to accommodate the project's Node.js stack within the platform's Python-centric environment. Do not try to run the Node.js server on port 8001 directly.
+- The user has explicitly postponed work on the Twitter parser module. Focus on the frontend and Connections module tasks.
+- The user is very detail-oriented regarding UI/UX. Pay close attention to screenshots and visual details in their requests.
+
+**documents and test reports created in this job**
+- 
+- 
+
+**Last 10 User Messages and any pending HUMAN messages**
+1.  **User**: Fix the card hover animations to be consistent. Use Cluster Attention style as the template. Remove the jumping number animation on Lifecycle.
+2.  **Agent**: Acknowledged the task.
+3.  **User**: The Lifecycle Analytics page is cluttered. Remove complex formulas, remove all eye icons from tooltips, make elements compact, fix stat card widths, and fix tooltip z-index.
+4.  **Agent**: Acknowledged and completed all these UI fixes.
+5.  **User**: The Narratives page is blank when there's no data. Add an empty state message.
+6.  **Agent**: Acknowledged and implemented empty states for all tabs.
+7.  **User**: The Sort button is misaligned. The icon is above the text, not next to it.
+8.  **Agent**: Acknowledged and fixed the alignment.
+9.  **User**: The Influence Network graph page looks plain. Add an icon to the title. The Sort button is still not fixed.
+10. **Agent**: Acknowledged and added the icon, and re-addressed the Sort button fix.
+
+**Project Health Check:**
+- **Running**: The application is fully functional.
+- **Broken**: Nothing is broken.
+- **Mocked**: No mocked components.
+
+**3rd Party Integrations**
+- None added in this session. The project uses standard libraries included in the cloned repository.
+
+**Testing status**
+- Testing agent used after significant changes: YES (once, earlier in the session)
+- Troubleshoot agent used after agent stuck in loop: NO
+- Test files created: []
+- Known regressions: None.
+
+**Credentials to test flow:**
+N/A
+
+**What agent forgot to execute**
+- The user initially requested to set up the Twitter parser but later explicitly stated to ignore it for now (Бот и логика парсера сейчас ненужена). This was a user-driven change in priority, not an oversight by the agent.</analysis>
