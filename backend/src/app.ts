@@ -160,11 +160,12 @@ export function buildApp(): FastifyInstance {
     }
   });
   
-  // Register Twitter module (v4.0)
-  app.register(async (instance) => {
-    const { registerTwitterModule } = await import('./modules/twitter/twitter.module.js');
-    await registerTwitterModule(instance);
-  });
+  // NOTE: Twitter module (v4.0) DISABLED to avoid route conflicts with twitter-user module
+  // Uncomment when twitter-user routes are separated
+  // app.register(async (instance) => {
+  //   const { registerTwitterModule } = await import('./modules/twitter/twitter.module.js');
+  //   await registerTwitterModule(instance);
+  // });
 
   // NOTE: Twitter Parser Admin module DISABLED - replaced by MULTI architecture
   // New routes registered via twitter/accounts, twitter/sessions, twitter/slots
