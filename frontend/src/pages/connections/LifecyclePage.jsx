@@ -708,7 +708,7 @@ export default function LifecyclePage() {
               return (
                 <div
                   key={cluster.cluster}
-                  className={`bg-white dark:bg-gray-800 rounded-2xl border-2 ${config.border} p-5 shadow-sm hover:shadow-xl transition-all hover:scale-[1.02]`}
+                  className={`bg-white dark:bg-gray-800 rounded-2xl border-2 ${config.border} p-5 shadow-sm hover:shadow-xl transition-shadow duration-300`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">{cluster.cluster}</h3>
