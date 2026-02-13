@@ -521,27 +521,28 @@ const ConnectionsEarlySignalPage = () => {
   }, [filteredAccounts]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-6">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
       {/* Header */}
-      <div className="mb-4 md:mb-6">
+      <div className="mb-6 animate-fade-in-up">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                <IconRadar size={24} className="text-green-500" />
-                Early Signal Radar
-              </h1>
-              <Tooltip content="The Early Signal Radar identifies accounts showing unusual growth patterns before they become mainstream. High influence + positive acceleration = potential alpha.">
-                <IconAttention size={18} className="text-gray-400 hover:text-gray-600 cursor-help" />
-              </Tooltip>
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 flex-shrink-0 mt-1">
+              <IconRadar size={24} className="text-white" />
             </div>
-            <p className="text-gray-500 text-xs md:text-sm mt-1">Identify accounts before they become significant</p>
+            <div>
+              <Tooltip content="The Early Signal Radar identifies accounts showing unusual growth patterns before they become mainstream. High influence + positive acceleration = potential alpha.">
+                <h1 className="text-xl md:text-2xl font-bold text-gray-900 cursor-help">
+                  Early Signal Radar
+                </h1>
+              </Tooltip>
+              <p className="text-gray-500 text-xs md:text-sm mt-1">Identify accounts before they become significant</p>
+            </div>
           </div>
           
           <div className="flex items-center gap-2 md:gap-3 flex-wrap">
             {/* Stats */}
             <Tooltip content="Breakout: High momentum accounts with strong growth. Rising: Accounts with positive acceleration worth monitoring.">
-              <div className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-white rounded-lg border border-gray-200 cursor-help">
+              <div className="flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 bg-white rounded-xl border border-gray-200 cursor-help shadow-sm">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-green-500"></span>
                   <span className="font-bold text-gray-900">{stats.breakouts}</span>
@@ -557,16 +558,16 @@ const ConnectionsEarlySignalPage = () => {
             </Tooltip>
 
             {/* View toggle */}
-            <div className="flex bg-white rounded-lg border border-gray-200 p-1">
+            <div className="flex bg-white rounded-xl border border-gray-200 p-1 shadow-sm">
               <button onClick={() => setView('radar')}
-                      className={`px-2 md:px-3 py-1.5 rounded text-xs md:text-sm font-medium flex items-center gap-1.5 ${
-                        view === 'radar' ? 'bg-blue-500 text-white' : 'text-gray-600 hover:bg-gray-50'
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium flex items-center gap-1.5 transition-all duration-200 ${
+                        view === 'radar' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600 hover:bg-gray-50'
                       }`}>
                 <IconRadar size={16} /> Radar
               </button>
               <button onClick={() => setView('table')}
-                      className={`px-2 md:px-3 py-1.5 rounded text-xs md:text-sm font-medium flex items-center gap-1.5 ${
-                        view === 'table' ? 'bg-blue-500 text-white' : 'text-gray-600 hover:bg-gray-50'
+                      className={`px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium flex items-center gap-1.5 transition-all duration-200 ${
+                        view === 'table' ? 'bg-blue-500 text-white shadow-sm' : 'text-gray-600 hover:bg-gray-50'
                       }`}>
                 <IconTarget size={16} /> Table
               </button>
@@ -574,7 +575,7 @@ const ConnectionsEarlySignalPage = () => {
 
             {/* Refresh */}
             <button onClick={fetchData} disabled={loading}
-                    className="p-2 bg-white rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50"
+                    className="p-2.5 bg-white rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 hover:shadow-md transition-all duration-200 shadow-sm"
                     title="Refresh data">
               <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
             </button>
@@ -583,36 +584,36 @@ const ConnectionsEarlySignalPage = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-4 md:mb-6 p-3 md:p-4 bg-white rounded-lg border border-gray-200 overflow-x-auto">
+      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-6 p-4 bg-white rounded-2xl border border-gray-200 overflow-x-auto shadow-sm animate-fade-in-up stagger-1">
         <Tooltip content="Filter by account type: Retail (regular users), Influencer (high reach), Whale (major players)">
-          <span className="text-xs font-medium text-gray-500 uppercase flex items-center gap-1 cursor-help flex-shrink-0">
-            Profile: <IconAttention size={12} />
+          <span className="text-xs font-medium text-gray-500 uppercase cursor-help flex-shrink-0">
+            Profile:
           </span>
         </Tooltip>
         {['retail', 'influencer', 'whale'].map(p => (
           <button key={p}
                   onClick={() => setFilters(f => ({ ...f, profiles: f.profiles.includes(p) ? f.profiles.filter(x => x !== p) : [...f.profiles, p] }))}
-                  className={`px-2 md:px-3 py-1 rounded text-xs font-medium flex-shrink-0 ${
-                    filters.profiles.includes(p) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium flex-shrink-0 transition-all duration-200 ${
+                    filters.profiles.includes(p) ? 'bg-blue-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}>
             {p.charAt(0).toUpperCase() + p.slice(1)}
           </button>
         ))}
         <div className="w-px h-4 bg-gray-200 hidden md:block"></div>
         <Tooltip content="Filter by signal strength: Breakout (strong momentum), Rising (positive growth)">
-          <span className="text-xs font-medium text-gray-500 uppercase flex items-center gap-1 cursor-help flex-shrink-0">
-            Signal: <IconAttention size={12} />
+          <span className="text-xs font-medium text-gray-500 uppercase cursor-help flex-shrink-0">
+            Signal:
           </span>
         </Tooltip>
         <button onClick={() => setFilters(f => ({ ...f, badges: f.badges.includes('breakout') ? f.badges.filter(x => x !== 'breakout') : [...f.badges, 'breakout'] }))}
-                className={`px-3 py-1 rounded text-xs font-medium flex items-center gap-1 ${
-                  filters.badges.includes('breakout') ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ${
+                  filters.badges.includes('breakout') ? 'bg-green-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}>
           <IconSpikePump size={12} /> Breakout
         </button>
         <button onClick={() => setFilters(f => ({ ...f, badges: f.badges.includes('rising') ? f.badges.filter(x => x !== 'rising') : [...f.badges, 'rising'] }))}
-                className={`px-3 py-1 rounded text-xs font-medium flex items-center gap-1 ${
-                  filters.badges.includes('rising') ? 'bg-amber-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all duration-200 ${
+                  filters.badges.includes('rising') ? 'bg-amber-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}>
           <IconIgnition size={12} /> Rising
         </button>
