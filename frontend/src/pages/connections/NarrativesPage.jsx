@@ -208,7 +208,18 @@ export default function NarrativesPage() {
         {/* Narratives Tab */}
         {activeTab === 'narratives' && (
           <div className="grid gap-4 md:grid-cols-2">
-            {narratives.map((n) => {
+            {narratives.length === 0 ? (
+              <div className="md:col-span-2 bg-white rounded-xl border border-gray-200 p-12 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-50 flex items-center justify-center">
+                  <IconNarratives size={32} className="text-purple-300" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-700 mb-2">No Active Narratives</h3>
+                <p className="text-gray-500 text-sm max-w-md mx-auto">
+                  There are currently no tracked narratives. New narratives will appear here as they emerge from social signals and influencer activity.
+                </p>
+              </div>
+            ) : (
+              narratives.map((n) => {
               const colors = NARRATIVE_STATE_COLORS[n.state] || NARRATIVE_STATE_COLORS.SEEDING;
               const StateIcon = NARRATIVE_STATE_ICONS[n.state] || IconSeeding;
               return (
