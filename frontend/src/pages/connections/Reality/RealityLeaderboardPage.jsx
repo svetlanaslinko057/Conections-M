@@ -394,30 +394,6 @@ export default function RealityLeaderboardPage() {
                 description="High manipulation risk"
               />
             </div>
-            
-            {/* Formula */}
-            <div style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '8px', 
-              padding: '10px 14px', 
-              background: '#f3f4f6', 
-              borderRadius: '8px',
-              fontSize: '12px',
-              color: '#6b7280'
-            }}>
-              <span style={{ fontWeight: 500, color: '#374151' }}>Formula:</span>
-              <code style={{ 
-                fontFamily: 'monospace', 
-                background: '#ffffff', 
-                padding: '4px 8px', 
-                borderRadius: '4px',
-                border: '1px solid #e5e7eb',
-                color: '#111827'
-              }}>
-                Score = ((confirms − contradicts) ÷ total_checks) × 100
-              </code>
-            </div>
           </div>
         </div>
       </div>
