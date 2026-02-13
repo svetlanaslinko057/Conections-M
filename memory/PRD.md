@@ -43,7 +43,7 @@
 
 ## What's Been Implemented
 
-### Date: 2026-02-13
+### Date: 2026-02-13 (Session 1)
 - [x] Клонирован репозиторий из GitHub
 - [x] Скопирован backend/frontend код в /app
 - [x] Настроен Node.js backend с tsx для TypeScript
@@ -52,6 +52,14 @@
 - [x] Connections module зарегистрирован и работает
 - [x] Frontend загружается с боковым меню Connections
 - [x] Все тесты пройдены (backend 100%, frontend 95%)
+
+### Date: 2026-02-13 (Session 2 - UI Fixes)
+- [x] Reality Leaderboard: формула перенесена в tooltip, русский текст заменён на английский
+- [x] Sort компонент: исправлено выравнивание иконки и текста
+- [x] Influence Network: добавлена иконка в заголовок страницы
+- [x] Narratives: добавлены "empty state" сообщения для пустых списков
+- [x] Lifecycle Analytics: удалены сложные формулы, иконки "глаза", фиксированная ширина карточек, z-index тултипов
+- [x] **Hover-анимации унифицированы**: удалены "прыгающие" эффекты (`hover:-translate-y-1`, `hover:scale`), применён единый стиль (только `hover:shadow-lg transition-shadow duration-300`)
 
 ### Disabled/Skipped
 - Twitter module v4.0 отключен (конфликт routes с twitter-user)
