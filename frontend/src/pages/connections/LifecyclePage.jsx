@@ -741,16 +741,15 @@ export default function LifecyclePage() {
           </div>
         )}
 
-        {/* Formula Reference - Enhanced with full details */}
+        {/* Phase Legend - Compact version */}
         <div className="mt-8 p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <h3 className="font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
-            <IconSpikePump size={20} className="text-blue-500" />
-            Phase Detection Logic & Formulas
-            <Tooltip content="Each phase is calculated using weighted signals from exchange data. Hover over each phase for formula details.">
-              <IconAttention size={16} className="text-gray-400 cursor-help" />
-            </Tooltip>
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Tooltip content="Each phase is calculated using weighted signals from exchange data. Hover over each phase for details.">
+            <h3 className="font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2 cursor-help">
+              <IconSpikePump size={20} className="text-blue-500" />
+              Phase Detection Guide
+            </h3>
+          </Tooltip>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {['ACCUMULATION', 'IGNITION', 'EXPANSION', 'DISTRIBUTION'].map(phase => {
               const config = PHASE_CONFIG[phase];
               const PhIcon = config.IconComp;
@@ -759,56 +758,27 @@ export default function LifecyclePage() {
                   key={phase}
                   position="top"
                   content={
-                    <div className="max-w-sm">
-                      <div className="font-bold mb-2">{config.label}</div>
-                      <p className="text-xs text-gray-300 mb-2">{config.fullDesc}</p>
-                      <div className="border-t border-gray-600 pt-2 mt-2">
-                        <div className="text-xs font-semibold text-blue-300 mb-1">Formula:</div>
-                        <code className="text-xs text-gray-300 font-mono">{config.formula}</code>
-                      </div>
-                      <div className="mt-2 pt-2 border-t border-gray-600">
-                        <span className="text-xs">{config.tradingHint}</span>
-                      </div>
+                    <div>
+                      <div className="font-bold mb-1">{config.label}</div>
+                      <p className="text-xs text-gray-300 mb-2">{config.shortDesc}</p>
+                      <p className="text-xs">{config.tradingHint}</p>
                     </div>
                   }
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:scale-[1.02] transition-all cursor-help group">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r ${config.gradient} group-hover:scale-110 transition-transform`}>
-                        <PhIcon size={16} className="text-white" />
+                  <div className={`bg-white dark:bg-gray-800 rounded-xl p-3 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all cursor-help`}>
+                    <div className="flex items-center gap-2">
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r ${config.gradient}`}>
+                        <PhIcon size={14} className="text-white" />
                       </div>
-                      <span className="font-semibold text-gray-800 dark:text-white">{config.label}</span>
-                    </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{config.shortDesc}</p>
-                    <div className="flex items-center gap-1 text-xs text-blue-500 dark:text-blue-400">
-                      <IconAttention size={12} />
-                      Hover for formula
+                      <div>
+                        <div className="font-semibold text-sm text-gray-800 dark:text-white">{config.label}</div>
+                        <div className="text-xs text-gray-500">{config.shortDesc}</div>
+                      </div>
                     </div>
                   </div>
                 </Tooltip>
               );
             })}
-          </div>
-          
-          {/* Quick Legend */}
-          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500" /> A = Accumulation Score
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-green-500" /> I = Ignition Score
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-amber-500" /> E = Expansion Score
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-red-500" /> D = Distribution Score
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-purple-500" /> Confidence = Signal alignment strength
-              </span>
-            </div>
           </div>
         </div>
       </div>
