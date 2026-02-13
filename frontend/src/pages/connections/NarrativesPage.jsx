@@ -362,6 +362,7 @@ export default function NarrativesPage() {
                 ))}
               </tbody>
             </table>
+            )}
           </div>
         )}
 
