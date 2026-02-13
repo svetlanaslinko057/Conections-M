@@ -140,12 +140,16 @@ export function RealityLeaderboardTable({ entries, onSelect, lightTheme = false 
               
               {/* Sample */}
               <td style={{ ...tdStyle, textAlign: 'center', color: colors.textSecondary, fontWeight: 500 }}>
-                {entry.sample}
+                {entry.sample != null ? entry.sample : (
+                  <span style={{ color: colors.textMuted }}>—</span>
+                )}
               </td>
               
               {/* Last */}
               <td style={{ ...tdStyle, textAlign: 'center', color: colors.textMuted, fontSize: '12px' }}>
-                {entry.lastTs ? formatDate(entry.lastTs) : '-'}
+                {entry.lastTs ? formatDate(entry.lastTs) : (
+                  <span style={{ color: colors.textMuted }}>No events</span>
+                )}
               </td>
             </tr>
           ))}
