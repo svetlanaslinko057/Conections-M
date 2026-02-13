@@ -7,18 +7,18 @@ const API_BASE = process.env.REACT_APP_BACKEND_URL || '';
 
 // Mock data for Reality Leaderboard
 const MOCK_REALITY_ENTRIES = [
-  { actorId: 'cobie', handle: 'cobie', name: 'Cobie', realityScore: 87, confirms: 24, contradicts: 3, noData: 2, level: 'ELITE' },
-  { actorId: 'hsaka', handle: 'hsaka', name: 'Hsaka', realityScore: 82, confirms: 18, contradicts: 4, noData: 3, level: 'STRONG' },
-  { actorId: 'punk6529', handle: 'punk6529', name: 'punk6529', realityScore: 91, confirms: 32, contradicts: 2, noData: 1, level: 'ELITE' },
-  { actorId: 'thedefiedge', handle: 'thedefiedge', name: 'The DeFi Edge', realityScore: 79, confirms: 15, contradicts: 5, noData: 4, level: 'STRONG' },
-  { actorId: 'pentosh1', handle: 'pentosh1', name: 'Pentoshi', realityScore: 85, confirms: 19, contradicts: 4, noData: 2, level: 'ELITE' },
-  { actorId: 'inversebrah', handle: 'inversebrah', name: 'inversebrah', realityScore: 58, confirms: 12, contradicts: 9, noData: 6, level: 'MIXED' },
-  { actorId: 'DefiIgnas', handle: 'DefiIgnas', name: 'Ignas | DeFi', realityScore: 76, confirms: 17, contradicts: 6, noData: 3, level: 'STRONG' },
-  { actorId: 'route2fi', handle: 'route2fi', name: 'Route 2 FI', realityScore: 73, confirms: 16, contradicts: 7, noData: 2, level: 'STRONG' },
-  { actorId: 'CryptoCapo_', handle: 'CryptoCapo_', name: 'Il Capo Of Crypto', realityScore: 32, confirms: 8, contradicts: 18, noData: 5, level: 'RISKY' },
-  { actorId: 'farokh', handle: 'farokh', name: 'Farokh', realityScore: 81, confirms: 22, contradicts: 5, noData: 1, level: 'STRONG' },
-  { actorId: 'taikimeda', handle: 'taikimeda', name: 'Taiki Maeda', realityScore: 68, confirms: 12, contradicts: 6, noData: 4, level: 'MIXED' },
-  { actorId: 'TheCryptoDog', handle: 'TheCryptoDog', name: 'The Crypto Dog', realityScore: 54, confirms: 14, contradicts: 12, noData: 8, level: 'MIXED' },
+  { actorId: 'cobie', username: 'cobie', name: 'Cobie', realityScore: 87, confirms: 24, contradicts: 3, noData: 2, level: 'ELITE', sample: 29, lastTs: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'hsaka', username: 'HsakaTrades', name: 'Hsaka', realityScore: 82, confirms: 18, contradicts: 4, noData: 3, level: 'STRONG', sample: 25, lastTs: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'punk6529', username: 'punk6529', name: 'punk6529', realityScore: 91, confirms: 32, contradicts: 2, noData: 1, level: 'ELITE', sample: 35, lastTs: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'thedefiedge', username: 'thedefiedge', name: 'The DeFi Edge', realityScore: 79, confirms: 15, contradicts: 5, noData: 4, level: 'STRONG', sample: 24, lastTs: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'pentosh1', username: 'Pentosh1', name: 'Pentoshi', realityScore: 85, confirms: 19, contradicts: 4, noData: 2, level: 'ELITE', sample: 25, lastTs: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'inversebrah', username: 'inversebrah', name: 'inversebrah', realityScore: 58, confirms: 12, contradicts: 9, noData: 6, level: 'MIXED', sample: 27, lastTs: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'DefiIgnas', username: 'DefiIgnas', name: 'Ignas | DeFi', realityScore: 76, confirms: 17, contradicts: 6, noData: 3, level: 'STRONG', sample: 26, lastTs: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'route2fi', username: 'Route2FI', name: 'Route 2 FI', realityScore: 73, confirms: 16, contradicts: 7, noData: 2, level: 'STRONG', sample: 25, lastTs: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'CryptoCapo_', username: 'CryptoCapo_', name: 'Il Capo Of Crypto', realityScore: 32, confirms: 8, contradicts: 18, noData: 5, level: 'RISKY', sample: 31, lastTs: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'farokh', username: 'faaborshi', name: 'Farokh', realityScore: 81, confirms: 22, contradicts: 5, noData: 1, level: 'STRONG', sample: 28, lastTs: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'taikimeda', username: 'TaikiMaeda2', name: 'Taiki Maeda', realityScore: 68, confirms: 12, contradicts: 6, noData: 4, level: 'MIXED', sample: 22, lastTs: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+  { actorId: 'TheCryptoDog', username: 'TheCryptoDog', name: 'The Crypto Dog', realityScore: 54, confirms: 14, contradicts: 12, noData: 8, level: 'MIXED', sample: 34, lastTs: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
 ];
 
 const MOCK_GROUPS = [
