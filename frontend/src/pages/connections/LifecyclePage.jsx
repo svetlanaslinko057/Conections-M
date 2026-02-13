@@ -136,7 +136,7 @@ const ERP_CONFIG = {
   },
 };
 
-// Tooltip component
+// Tooltip component with higher z-index
 const Tooltip = ({ content, children, position = 'top' }) => {
   const [show, setShow] = useState(false);
   
@@ -151,7 +151,7 @@ const Tooltip = ({ content, children, position = 'top' }) => {
     <div className="relative inline-flex" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
       {children}
       {show && (
-        <div className={`absolute z-50 ${positionClasses[position]} w-72 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-xl`}>
+        <div className={`absolute ${positionClasses[position]} w-72 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-xl pointer-events-none`} style={{ zIndex: 9999 }}>
           {content}
           <div className={`absolute w-2 h-2 bg-gray-900 transform rotate-45 ${
             position === 'top' ? 'top-full -translate-y-1 left-1/2 -translate-x-1/2' :
