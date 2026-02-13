@@ -167,7 +167,7 @@ const RiskBadge = ({ level, showTooltip = false }) => {
 const FocusChart = ({ account }) => {
   if (!account) {
     return (
-      <div className="bg-gray-50 rounded-xl p-8 flex items-center justify-center h-[300px]">
+      <div className="bg-white rounded-2xl border border-gray-200 p-8 flex items-center justify-center h-[300px] shadow-sm">
         <p className="text-gray-400">Select an account from the list →</p>
       </div>
     );
@@ -189,15 +189,12 @@ const FocusChart = ({ account }) => {
   const color = isBreakout ? '#22c55e' : isRising ? '#f59e0b' : '#6b7280';
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4">
-      <div className="text-center mb-2">
-        <div className="flex items-center justify-center gap-2">
-          <h3 className="font-bold text-lg text-gray-900">@{account.username}</h3>
-          <Tooltip content="This chart shows the account's position based on Influence Score (Y-axis) and Acceleration (X-axis). The green 'ALPHA' zone indicates high-potential accounts.">
-            <IconAttention size={16} className="text-gray-400 hover:text-gray-600" />
-          </Tooltip>
-        </div>
-        <div className="flex items-center justify-center gap-2 mt-1">
+    <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-lg transition-shadow duration-300">
+      <div className="text-center mb-3">
+        <Tooltip content="This chart shows the account's position based on Influence Score (Y-axis) and Acceleration (X-axis). The green 'ALPHA' zone indicates high-potential accounts.">
+          <h3 className="font-bold text-lg text-gray-900 cursor-help">@{account.username}</h3>
+        </Tooltip>
+        <div className="flex items-center justify-center gap-2 mt-2">
           <ProfileBadge profile={account.profile} showTooltip />
           <EarlySignalBadge badge={account.early_signal?.badge} size="sm" showTooltip />
         </div>
@@ -245,31 +242,25 @@ const FocusChart = ({ account }) => {
       </svg>
       
       {/* Stats below chart */}
-      <div className="grid grid-cols-3 gap-2 mt-4 text-center">
+      <div className="grid grid-cols-3 gap-3 mt-4">
         <Tooltip content="Combined influence score factoring in followers, engagement quality, and historical accuracy. Higher is better.">
-          <div className="bg-gray-50 rounded-lg p-2 cursor-help">
-            <div className="text-xs text-gray-500 flex items-center justify-center gap-1">
-              Influence <IconAttention size={12} />
-            </div>
-            <div className="font-bold text-gray-900">{account.influence_adjusted}</div>
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-3 cursor-help hover:shadow-md transition-shadow duration-300">
+            <div className="text-xs text-gray-500 mb-1">Influence</div>
+            <div className="font-bold text-gray-900 text-lg">{account.influence_adjusted}</div>
             <div className="text-xs text-green-600">+{account.influence_adjusted - account.influence_base}</div>
           </div>
         </Tooltip>
         <Tooltip content="Rate of change in influence. Positive = growing influence, Negative = declining. Values > 0.3 indicate strong momentum.">
-          <div className="bg-gray-50 rounded-lg p-2 cursor-help">
-            <div className="text-xs text-gray-500 flex items-center justify-center gap-1">
-              Acceleration <IconAttention size={12} />
-            </div>
-            <div className={`font-bold ${accel > 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-3 cursor-help hover:shadow-md transition-shadow duration-300">
+            <div className="text-xs text-gray-500 mb-1">Acceleration</div>
+            <div className={`font-bold text-lg ${accel > 0 ? 'text-green-600' : 'text-red-600'}`}>
               {accel > 0 ? '+' : ''}{accel.toFixed(2)}
             </div>
           </div>
         </Tooltip>
         <Tooltip content="Risk assessment based on bot activity, suspicious patterns, and prediction accuracy.">
-          <div className="bg-gray-50 rounded-lg p-2 cursor-help">
-            <div className="text-xs text-gray-500 flex items-center justify-center gap-1">
-              Risk <IconAttention size={12} />
-            </div>
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-3 cursor-help hover:shadow-md transition-shadow duration-300">
+            <div className="text-xs text-gray-500 mb-1">Risk</div>
             <RiskBadge level={account.risk_level} />
           </div>
         </Tooltip>
