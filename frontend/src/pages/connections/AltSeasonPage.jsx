@@ -176,7 +176,7 @@ export default function AltSeasonPage() {
         {/* Top Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {/* Alt Season Probability Card */}
-          <Card className={`${aspConfig.bg} border-0 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in-up stagger-1 group relative cursor-help`}>
+          <Card className={`${aspConfig.bg} border-0 shadow-sm hover:shadow-lg transition-shadow duration-300 animate-fade-in-up stagger-1 group relative cursor-help`}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-medium text-gray-600">Alt Season Probability</span>

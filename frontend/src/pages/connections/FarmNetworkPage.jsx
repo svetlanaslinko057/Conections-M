@@ -102,7 +102,7 @@ function FarmGroupsPanel({ farms, onSelectFarm }) {
           <div
             key={farm.farmId || idx}
             onClick={() => onSelectFarm(farm)}
-            className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all border-l-4"
+            className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 cursor-pointer hover:shadow-md transition-shadow duration-300 border-l-4"
             style={{ borderLeftColor: FARM_COLORS[farm.farmId] || FARM_COLORS.default }}
           >
             <div className="flex items-center justify-between mb-2">
