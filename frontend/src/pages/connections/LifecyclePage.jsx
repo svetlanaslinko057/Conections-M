@@ -635,17 +635,17 @@ export default function LifecyclePage() {
                     <th className="px-5 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Asset</th>
                     <th className="px-5 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       <Tooltip content="Current lifecycle phase based on exchange data analysis">
-                        <span className="flex items-center gap-1 cursor-help">Phase <IconAttention size={12} /></span>
+                        <span className="cursor-help">Phase</span>
                       </Tooltip>
                     </th>
                     <th className="px-5 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       <Tooltip content="How strongly the signals align with the detected phase (higher = more confident)">
-                        <span className="flex items-center gap-1 cursor-help">Confidence <IconAttention size={12} /></span>
+                        <span className="cursor-help">Confidence</span>
                       </Tooltip>
                     </th>
                     <th className="px-5 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider w-1/3">
                       <Tooltip content="Score distribution across all 4 phases. Hover over segments for details.">
-                        <span className="flex items-center gap-1 cursor-help">Distribution <IconAttention size={12} /></span>
+                        <span className="cursor-help">Distribution</span>
                       </Tooltip>
                     </th>
                     <th className="px-5 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Window</th>
