@@ -296,11 +296,15 @@ export default function ConnectionsGraphV2Page() {
       {/* Header with Search */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Influence Network</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 max-w-xl">
-            Visualize connection strength between influencers, VCs, and projects. The graph reveals 
-            co-investment patterns, follow relationships, on-chain interactions, and media coverage overlap. 
-            Use the Handshake feature to compute shortest paths and connection strength between any two accounts.
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+              <IconNetwork size={20} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Influence Network</h1>
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 max-w-xl">
+            Visualize connection strength between influencers, VCs, and projects. 
+            Discover co-investment patterns, follow relationships, and on-chain interactions.
           </p>
           
           {/* Search Input */}
