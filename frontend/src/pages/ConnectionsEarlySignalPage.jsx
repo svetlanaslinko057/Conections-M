@@ -1,17 +1,15 @@
 /**
- * Early Signal Radar - CLEAN UI VERSION
+ * Early Signal Radar - POLISHED UI VERSION
  * 
  * Single focus point on chart + account list for selection
- * Light theme as requested
+ * Light theme with animations matching Alt Season/Lifecycle pages
  */
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   RefreshCw,
   ChevronRight,
-  X,
-  Check,
-  Eye
+  ExternalLink
 } from 'lucide-react';
 import { 
   IconRadar, 
@@ -25,25 +23,34 @@ import { Button } from '../components/ui/button';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 
 // ============================================================
-// TOOLTIP COMPONENT
+// TOOLTIP COMPONENT - Fixed z-index
 // ============================================================
 
-const Tooltip = ({ children, content }) => {
+const Tooltip = ({ children, content, position = 'top' }) => {
   const [show, setShow] = useState(false);
   
+  const positionClasses = {
+    top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
+    bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
+  };
+  
   return (
-    <div className="relative inline-flex items-center">
-      <div 
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
-        className="cursor-help"
-      >
-        {children}
-      </div>
+    <div 
+      className="relative inline-flex"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+    >
+      {children}
       {show && (
-        <div className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+        <div 
+          className={`absolute ${positionClasses[position]} w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl pointer-events-none`}
+          style={{ zIndex: 9999 }}
+        >
           {content}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+          <div className={`absolute w-2 h-2 bg-gray-900 transform rotate-45 ${
+            position === 'top' ? 'top-full -translate-y-1 left-1/2 -translate-x-1/2' :
+            'bottom-full translate-y-1 left-1/2 -translate-x-1/2'
+          }`} />
         </div>
       )}
     </div>
