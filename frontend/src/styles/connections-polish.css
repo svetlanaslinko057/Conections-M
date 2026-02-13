@@ -70,19 +70,6 @@
   }
 }
 
-/* Count up number animation */
-@keyframes countPop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 /* ============================================
    2. BASE ANIMATION CLASSES
    ============================================ */
@@ -291,18 +278,6 @@
     rgba(59, 130, 246, 0.1), 
     transparent
   );
-}
-
-/* ============================================
-   8. STAT CARD NUMBER ANIMATION
-   ============================================ */
-
-.stat-number {
-  transition: all 0.3s ease;
-}
-
-.stat-number:hover {
-  animation: countPop 0.3s ease;
 }
 
 /* ============================================
