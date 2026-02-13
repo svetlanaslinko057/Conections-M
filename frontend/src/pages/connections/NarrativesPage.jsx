@@ -286,7 +286,8 @@ export default function NarrativesPage() {
                   )}
                 </div>
               );
-            })}
+            })
+            )}
           </div>
         )}
 
