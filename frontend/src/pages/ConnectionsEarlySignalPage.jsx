@@ -4,7 +4,8 @@
  * Single focus point on chart + account list for selection
  * Light theme with animations matching Alt Season/Lifecycle pages
  */
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { 
   RefreshCw,
@@ -23,35 +24,63 @@ import { Button } from '../components/ui/button';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 
 // ============================================================
-// TOOLTIP COMPONENT - Fixed z-index
+// TOOLTIP COMPONENT - Using Portal to escape overflow
 // ============================================================
 
 const Tooltip = ({ children, content, position = 'top' }) => {
   const [show, setShow] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef(null);
   
-  const positionClasses = {
-    top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
-    bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
+  const handleMouseEnter = () => {
+    if (triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      if (position === 'top') {
+        setCoords({
+          top: rect.top - 8,
+          left: rect.left + rect.width / 2
+        });
+      } else {
+        setCoords({
+          top: rect.bottom + 8,
+          left: rect.left + rect.width / 2
+        });
+      }
+    }
+    setShow(true);
   };
   
   return (
-    <div 
-      className="relative inline-flex"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      {children}
-      {show && (
+    <>
+      <div 
+        ref={triggerRef}
+        className="inline-flex cursor-help"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={() => setShow(false)}
+      >
+        {children}
+      </div>
+      {show && createPortal(
         <div 
-          className={`absolute ${positionClasses[position]} w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl pointer-events-none`}
-          style={{ zIndex: 9999 }}
+          className="fixed w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-2xl pointer-events-none"
+          style={{ 
+            zIndex: 99999,
+            top: position === 'top' ? coords.top : coords.top,
+            left: coords.left,
+            transform: position === 'top' ? 'translate(-50%, -100%)' : 'translate(-50%, 0)'
+          }}
         >
           {content}
-          <div className={`absolute w-2 h-2 bg-gray-900 transform rotate-45 ${
-            position === 'top' ? 'top-full -translate-y-1 left-1/2 -translate-x-1/2' :
-            'bottom-full translate-y-1 left-1/2 -translate-x-1/2'
-          }`} />
-        </div>
+          <div 
+            className="absolute w-2 h-2 bg-gray-900 transform rotate-45"
+            style={{
+              left: '50%',
+              marginLeft: '-4px',
+              ...(position === 'top' ? { bottom: '-4px' } : { top: '-4px' })
+            }}
+          />
+        </div>,
+        document.body
       )}
     </div>
   );
