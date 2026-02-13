@@ -428,47 +428,47 @@ export default function LifecyclePage() {
         {/* Stats Cards - Enhanced with fixed width */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 animate-fade-in-up stagger-2">
           <Tooltip content="Total number of assets being tracked for lifecycle analysis">
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-help w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg transition-shadow duration-300 cursor-help w-full">
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 Assets Tracked
               </div>
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mt-1 stat-number">{stats.assets}</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mt-1">{stats.assets}</div>
             </div>
           </Tooltip>
           
           <Tooltip content="Number of correlated asset groups (tokens that move together)">
-            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-help w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:shadow-lg transition-shadow duration-300 cursor-help w-full">
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 Clusters
               </div>
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mt-1 stat-number">{stats.clusters}</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-white mt-1">{stats.clusters}</div>
             </div>
           </Tooltip>
           
           <Tooltip content="Assets in IGNITION phase - best entry opportunities!">
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-1 transition-all duration-300 cursor-help w-full">
+            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300 cursor-help w-full">
               <div className="text-sm text-white/80 flex items-center gap-1">
                 <IconIgnition size={16} /> Igniting
               </div>
-              <div className="text-3xl font-bold mt-1 stat-number">{stats.igniting}</div>
+              <div className="text-3xl font-bold mt-1">{stats.igniting}</div>
             </div>
           </Tooltip>
           
           <Tooltip content="Assets in DISTRIBUTION phase - smart money exiting, be cautious">
-            <div className="bg-gradient-to-br from-red-500 to-rose-600 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-red-500/30 hover:-translate-y-1 transition-all duration-300 cursor-help w-full">
+            <div className="bg-gradient-to-br from-red-500 to-rose-600 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-red-500/30 transition-shadow duration-300 cursor-help w-full">
               <div className="text-sm text-white/80 flex items-center gap-1">
                 <IconDecay size={16} /> Distributing
               </div>
-              <div className="text-3xl font-bold mt-1 stat-number">{stats.distributing}</div>
+              <div className="text-3xl font-bold mt-1">{stats.distributing}</div>
             </div>
           </Tooltip>
           
           <Tooltip content="Active rotation signals - capital moving between sectors">
-            <div className="bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 transition-all duration-300 cursor-help w-full">
+            <div className="bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl p-4 text-white hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300 cursor-help w-full">
               <div className="text-sm text-white/80 flex items-center gap-1">
                 <ArrowRight className="w-4 h-4" /> Rotations
               </div>
-              <div className="text-3xl font-bold mt-1 stat-number">{stats.rotations}</div>
+              <div className="text-3xl font-bold mt-1">{stats.rotations}</div>
             </div>
           </Tooltip>
         </div>

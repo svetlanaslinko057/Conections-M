@@ -481,6 +481,7 @@ export default function RealityLeaderboardPage() {
 // Stats Card with Tooltip
 function StatCard({ label, value, color, tooltip, icon }) {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   
   return (
     <div 
@@ -491,11 +492,11 @@ function StatCard({ label, value, color, tooltip, icon }) {
         borderRadius: '10px',
         cursor: 'help',
         position: 'relative',
-        boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
-        transition: 'all 0.2s ease',
+        boxShadow: isHovered ? '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)' : '0 1px 2px rgba(0,0,0,0.05)',
+        transition: 'box-shadow 0.3s ease',
       }}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+      onMouseEnter={() => { setShowTooltip(true); setIsHovered(true); }}
+      onMouseLeave={() => { setShowTooltip(false); setIsHovered(false); }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
         <span style={{ fontSize: '14px' }}>{icon}</span>
