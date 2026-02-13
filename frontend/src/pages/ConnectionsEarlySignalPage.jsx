@@ -82,7 +82,7 @@ const Tooltip = ({ children, content, position = 'top' }) => {
         </div>,
         document.body
       )}
-    </div>
+    </>
   );
 };
 
